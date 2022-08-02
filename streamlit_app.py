@@ -30,15 +30,7 @@ def audiorec_demo_app():
     # specify directory and initialize st_audiorec object functionality
     st_audiorec = components.declare_component("st_audiorec", path=build_dir)
 
-    # TITLE and Creator information
-    st.title('streamlit audio recorder')
-    st.markdown('Implemented by '
-        '[Stefan Rummer](https://www.linkedin.com/in/stefanrmmr/) - '
-        'view project source code on '
-        '[GitHub](https://github.com/stefanrmmr/streamlit_audio_recorder)')
-    st.write('\n\n')
-
-
+    
     # STREAMLIT AUDIO RECORDER Instance
     val = st_audiorec()
     # web component returns arraybuffer from WAV-blob
@@ -62,3 +54,4 @@ if __name__ == '__main__':
 
     # call main function
     audiorec_demo_app()
+
