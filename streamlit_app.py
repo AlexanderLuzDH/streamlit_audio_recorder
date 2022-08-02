@@ -53,8 +53,7 @@ if __name__ == '__main__':
 
 
 ####################################################### SPEECH TO TEXT
-#import StreamlitAudioRecorder
-filename = StreamlitAudioRecorder.filename
+filename = St_audiorec.filename
 st.write(f"filename is {filename}")
 
 # read the audio file
