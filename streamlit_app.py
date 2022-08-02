@@ -6,6 +6,10 @@ import streamlit as st
 from io import BytesIO
 import streamlit.components.v1 as components
 
+import speech_recognition as sr
+import pyaudio
+
+
 
 # DESIGN implement changes to the standard streamlit UI/UX
 st.set_page_config(page_title="streamlit_audio_recorder")
@@ -55,3 +59,9 @@ if __name__ == '__main__':
     # call main function
     audiorec_demo_app()
 
+
+####################################################### SPEECH TO TEXT
+ 
+r = sr.Recognizer()
+transcription = r.recognize_google(wav_bytes, language="en-EN")
+st.write(transcription)
