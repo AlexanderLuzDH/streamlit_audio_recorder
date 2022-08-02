@@ -9,12 +9,6 @@ import streamlit.components.v1 as components
 import speech_recognition as sr
 import pyaudio
 
-############################################################
-if 'mic_input' not in st.session_state:
-    st.session_state.mic_input = ""
-
-wav_bytes = ""
-
 
 #########################################################################
 
@@ -70,16 +64,28 @@ if __name__ == '__main__':
 ####################################################### SPEECH TO TEXT
  
 
-# Create an instance of the Recognizer class
-recognizer = sr.Recognizer()
+# get audio from the microphone
+r = sr.Recognizer()
+with sr.Microphone() as source:
+    print("Say something!")
+    audio = r.listen(source)
 
+# recognize speech using Sphinx
+try:
+    print("Sphinx thinks you said " + r.recognize_sphinx(audio))
+except sr.UnknownValueError:
+    print("Sphinx could not understand audio")
+except sr.RequestError as e:
+    print("Sphinx error; {0}".format(e))
 
-# Create audio data
-with st.session_state.mic_input as source:
-    audiodata = recognizer.record(st.session_state.mic_input)
-type(audiodata)
+# recognize speech using Google Speech Recognition
+try:
+    # for testing purposes, we're just using the default API key
+    # to use another API key, use `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
+    # instead of `r.recognize_google(audio)`
+    print("Google Speech Recognition thinks you said " + r.recognize_google(audio))
+except sr.UnknownValueError:
+    print("Google Speech Recognition could not understand audio")
+except sr.RequestError as e:
+    print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
-# Extract text
-text = recognizer.recognize_google(audio_data=audiodata, language='en-US')
-
-st.write(text)
