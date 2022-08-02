@@ -10,8 +10,8 @@ import speech_recognition as sr
 import pyaudio
 
 ############################################################
-#if 'val' not in st.session_state:
-#    st.session_state.mic_input = ""
+if 'mic_input' not in st.session_state:
+    st.session_state.mic_input = ""
 
 wav_bytes = ""
 
@@ -53,8 +53,8 @@ def audiorec_demo_app():
             ind = np.array(ind, dtype=int)  # convert to np array
             val = np.array(val)             # convert to np array
             sorted_ints = val[ind]
-            stream = BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
-            wav_bytes = stream.read()
+            st.session_state.mic_input = BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
+            wav_bytes = st.session_state.mic_input.read()
 
         # wav_bytes contains audio data in format to be further processed
         # display audio data as received on the Python side
@@ -70,4 +70,4 @@ if __name__ == '__main__':
 ####################################################### SPEECH TO TEXT
  
 r = sr.Recognizer()
-st.write(r.recognize_google(wav_bytes, language="en-EN"))
+r.recognize_google(st.session_state.mic_input, language="en-EN")
