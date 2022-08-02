@@ -13,7 +13,7 @@ import pyaudio
 if 'mic_input' not in st.session_state:
     st.session_state.mic_input = ""
     
-
+filename=""
     
 #########################################################################
 
@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
 
 ####################################################### SPEECH TO TEXT
-
+st.write(filename)
 
 # read the audio file
 #with sr.AudioFile('audio.wav') as source:
