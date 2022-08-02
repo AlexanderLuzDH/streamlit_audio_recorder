@@ -53,10 +53,7 @@ if __name__ == '__main__':
 
 
 ####################################################### SPEECH TO TEXT
-with open('filename.txt') as f:
-    contents = f.read()
-    
-st.write(contents)
+
 # read the audio file
 #with sr.AudioFile('audio.wav') as source:
 #    audio = r.record(source)

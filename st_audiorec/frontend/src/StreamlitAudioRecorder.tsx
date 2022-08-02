@@ -112,9 +112,7 @@ class StAudioRec extends StreamlitComponentBase<State> {
       datetime = datetime.replace(/_/g, '');
       datetime = datetime.replace(',', '');
       var filename = 'streamlit_audio_' + datetime + '.wav';
-	   // save filename in txt 
-	  const fs = require('fs-extra');
-	  fs.writeFileSync('filename.txt', filename);		
+	  	
       // auromatically trigger download
       const a = document.createElement('a');
       a.style.display = 'none';
