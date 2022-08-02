@@ -69,5 +69,20 @@ if __name__ == '__main__':
 
 ####################################################### SPEECH TO TEXT
  
-r = sr.Recognizer()
-r.recognize_google(st.session_state.mic_input, language="en-EN")
+
+# Create an instance of the Recognizer class
+recognizer = sr.Recognizer()
+
+# Create audio file instance from the original file
+audio_ex = sr.AudioFile(st.session_state.mic_input)
+type(audio_ex)
+
+# Create audio data
+with audio_ex as source:
+    audiodata = recognizer.record(audio_ex)
+type(audiodata)
+
+# Extract text
+text = recognizer.recognize_google(audio_data=audiodata, language='en-US')
+
+st.write(text)
