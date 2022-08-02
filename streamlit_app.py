@@ -14,9 +14,6 @@ if 'mic_input' not in st.session_state:
     st.session_state.mic_input = ""
     
 
-if 'val' not in st.session_state:
-    st.session_state.val = ""
-
     
 #########################################################################
 
@@ -45,7 +42,7 @@ def audiorec_demo_app():
 
     
     # STREAMLIT AUDIO RECORDER Instance
-    st.session_state.val = st_audiorec()
+    val = st_audiorec()
       
 if __name__ == '__main__':
 
@@ -55,17 +52,16 @@ if __name__ == '__main__':
 
 ####################################################### SPEECH TO TEXT
 
-st.write(st.session_state.val) 
 
 # read the audio file
-with sr.AudioFile('audio.wav') as source:
-    audio = r.record(source)
+#with sr.AudioFile('audio.wav') as source:
+#    audio = r.record(source)
 
 # recognize the speech in the audio
-try:
-    text = r.recognize_google(audio)
-    print(text)
-except sr.UnknownValueError:
-    print("Could not understand audio")
-except sr.RequestError as e:
-    print("Could not request results; {0}".format(e))
+#try:
+#    text = r.recognize_google(audio)
+#    print(text)
+#except sr.UnknownValueError:
+#    print("Could not understand audio")
+#except sr.RequestError as e:
+#    print("Could not request results; {0}".format(e))
