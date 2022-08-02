@@ -70,4 +70,4 @@ if __name__ == '__main__':
 ####################################################### SPEECH TO TEXT
  
 r = sr.Recognizer()
-r.recognize_google(wav_bytes, language="en-EN")
+st.write(r.recognize_google(wav_bytes, language="en-EN"))
