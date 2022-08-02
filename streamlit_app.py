@@ -69,5 +69,4 @@ if __name__ == '__main__':
 ####################################################### SPEECH TO TEXT
  
 r = sr.Recognizer()
-transcription = r.recognize_google(st.session_state.mic_input, language="en-EN")
-st.write(transcription)
+r.recognize_google(st.session_state.mic_input, language="en-EN")
