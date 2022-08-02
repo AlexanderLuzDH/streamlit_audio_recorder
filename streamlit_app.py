@@ -9,7 +9,9 @@ import streamlit.components.v1 as components
 import speech_recognition as sr
 import pyaudio
 
-
+############################################################
+if 'mic_input' not in st.session_state:
+    st.session_state.mic_input = ""
 #########################################################################
 
 # DESIGN implement changes to the standard streamlit UI/UX
