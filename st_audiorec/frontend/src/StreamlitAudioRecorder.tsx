@@ -117,8 +117,7 @@ class StAudioRec extends StreamlitComponentBase<State> {
       const a = document.createElement('a');
       a.style.display = 'none';
       a.href = this.state.audioDataURL;
-      a.download = filename;
-      st.session_state.filename = filename;
+      a.download = filename;      
 	  document.body.appendChild(a);
       a.click();
     }

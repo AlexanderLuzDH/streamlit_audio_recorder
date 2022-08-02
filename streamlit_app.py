@@ -44,8 +44,8 @@ def audiorec_demo_app():
 
     
     # STREAMLIT AUDIO RECORDER Instance
-    val = st_audiorec()
-      
+    val = st_audiorec()      
+    
 if __name__ == '__main__':
 
     # call main function
@@ -53,7 +53,9 @@ if __name__ == '__main__':
 
 
 ####################################################### SPEECH TO TEXT
-st.write(f"filename is {st.session_state.filename}")
+import StreamlitAudioRecorder
+filename = StreamlitAudioRecorder.filename
+st.write(f"filename is "{filename}")
 
 # read the audio file
 #with sr.AudioFile('audio.wav') as source:
