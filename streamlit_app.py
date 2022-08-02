@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
 
 ####################################################### SPEECH TO TEXT
-st.write(filename)
+st.write(f"filename is {filename}")
 
 # read the audio file
 #with sr.AudioFile('audio.wav') as source:
