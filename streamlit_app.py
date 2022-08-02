@@ -59,14 +59,6 @@ if __name__ == '__main__':
 # get audio from the microphone
 r = sr.Recognizer()
 
-# recognize speech using Sphinx
-try:
-    st.write("Sphinx thinks you said " + r.recognize_sphinx(st.session_state.val))
-except sr.UnknownValueError:
-    st.write("Sphinx could not understand audio")
-except sr.RequestError as e:
-    st.write("Sphinx error; {0}".format(e))
-
 # recognize speech using Google Speech Recognition
 try:
     # for testing purposes, we're just using the default API key
