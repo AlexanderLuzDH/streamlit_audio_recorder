@@ -9,7 +9,13 @@ import streamlit.components.v1 as components
 import speech_recognition as sr
 import pyaudio
 
+############################################################
+if 'mic_input' not in st.session_state:
+    st.session_state.mic_input = ""
 
+
+
+#########################################################################
 
 # DESIGN implement changes to the standard streamlit UI/UX
 st.set_page_config(page_title="streamlit_audio_recorder")
@@ -47,11 +53,11 @@ def audiorec_demo_app():
             val = np.array(val)             # convert to np array
             sorted_ints = val[ind]
             stream = BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
-            wav_bytes = stream.read()
+            st.session_state.mic_input = stream.read()
 
         # wav_bytes contains audio data in format to be further processed
         # display audio data as received on the Python side
-        st.audio(wav_bytes, format='audio/wav')
+        #st.audio(st.session_state.mic_input, format='audio/wav')
 
 
 if __name__ == '__main__':
@@ -63,5 +69,5 @@ if __name__ == '__main__':
 ####################################################### SPEECH TO TEXT
  
 r = sr.Recognizer()
-transcription = r.recognize_google(wav_bytes, language="en-EN")
+transcription = r.recognize_google(st.session_state.mic_input, language="en-EN")
 st.write(transcription)
