@@ -12,6 +12,12 @@ import pyaudio
 ############################################################
 if 'mic_input' not in st.session_state:
     st.session_state.mic_input = ""
+    
+
+if 'val' not in st.session_state:
+    st.session_state.val = ""
+
+    
 #########################################################################
 
 # DESIGN implement changes to the standard streamlit UI/UX
@@ -39,24 +45,8 @@ def audiorec_demo_app():
 
     
     # STREAMLIT AUDIO RECORDER Instance
-    val = st_audiorec()
-    # web component returns arraybuffer from WAV-blob
-    #st.write('Audio data received in the Python backend will appear below this message ...')
-
-    #if isinstance(val, dict):  # retrieve audio data
-    #    with st.spinner('retrieving audio-recording...'):
-    #        ind, val = zip(*val['arr'].items())
-    #        ind = np.array(ind, dtype=int)  # convert to np array
-    #        val = np.array(val)             # convert to np array
-    #        sorted_ints = val[ind]
-    #        st.session_state.mic_input = BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
-    #        st.session_state.mic_input = st.session_state.mic_input.read()
-
-        # wav_bytes contains audio data in format to be further processed
-        # display audio data as received on the Python side
-    #    st.audio(st.session_state.mic_input, format='audio/wav')
-
-
+    st.session_state.val = st_audiorec()
+      
 if __name__ == '__main__':
 
     # call main function
@@ -71,7 +61,7 @@ r = sr.Recognizer()
 
 # recognize speech using Sphinx
 try:
-    print("Sphinx thinks you said " + r.recognize_sphinx(st.session_state.mic_input))
+    print("Sphinx thinks you said " + r.recognize_sphinx(st.session_state.val))
 except sr.UnknownValueError:
     print("Sphinx could not understand audio")
 except sr.RequestError as e:
@@ -82,7 +72,7 @@ try:
     # for testing purposes, we're just using the default API key
     # to use another API key, use `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
     # instead of `r.recognize_google(audio)`
-    print("Google Speech Recognition thinks you said " + r.recognize_google(st.session_state.mic_input))
+    print("Google Speech Recognition thinks you said " + r.recognize_google(st.session_state.val))
 except sr.UnknownValueError:
     print("Google Speech Recognition could not understand audio")
 except sr.RequestError as e:
