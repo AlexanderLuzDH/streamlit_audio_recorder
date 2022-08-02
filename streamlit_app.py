@@ -43,18 +43,18 @@ def audiorec_demo_app():
     # web component returns arraybuffer from WAV-blob
     #st.write('Audio data received in the Python backend will appear below this message ...')
 
-    if isinstance(val, dict):  # retrieve audio data
-        with st.spinner('retrieving audio-recording...'):
-            ind, val = zip(*val['arr'].items())
-            ind = np.array(ind, dtype=int)  # convert to np array
-            val = np.array(val)             # convert to np array
-            sorted_ints = val[ind]
-            st.session_state.mic_input = BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
-            st.session_state.mic_input = st.session_state.mic_input.read()
+    #if isinstance(val, dict):  # retrieve audio data
+    #    with st.spinner('retrieving audio-recording...'):
+    #        ind, val = zip(*val['arr'].items())
+    #        ind = np.array(ind, dtype=int)  # convert to np array
+    #        val = np.array(val)             # convert to np array
+    #        sorted_ints = val[ind]
+    #        st.session_state.mic_input = BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
+    #        st.session_state.mic_input = st.session_state.mic_input.read()
 
         # wav_bytes contains audio data in format to be further processed
         # display audio data as received on the Python side
-        st.audio(st.session_state.mic_input, format='audio/wav')
+    #    st.audio(st.session_state.mic_input, format='audio/wav')
 
 
 if __name__ == '__main__':
