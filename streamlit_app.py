@@ -73,13 +73,10 @@ if __name__ == '__main__':
 # Create an instance of the Recognizer class
 recognizer = sr.Recognizer()
 
-# Create audio file instance from the original file
-audio_ex = sr.AudioFile(st.session_state.mic_input)
-type(audio_ex)
 
 # Create audio data
-with audio_ex as source:
-    audiodata = recognizer.record(audio_ex)
+with st.session_state.mic_input as source:
+    audiodata = recognizer.record(st.session_state.mic_input)
 type(audiodata)
 
 # Extract text
