@@ -44,7 +44,7 @@ def audiorec_demo_app():
     # STREAMLIT AUDIO RECORDER Instance
     val = st_audiorec()
     # web component returns arraybuffer from WAV-blob
-    st.write('Audio data received in the Python backend will appear below this message ...')
+    #st.write('Audio data received in the Python backend will appear below this message ...')
 
     if isinstance(val, dict):  # retrieve audio data
         with st.spinner('retrieving audio-recording...'):
@@ -69,4 +69,4 @@ if __name__ == '__main__':
 ####################################################### SPEECH TO TEXT
  
 r = sr.Recognizer()
-r.recognize_google(st.session_state.mic_input, language="en-EN")
+r.recognize_google(val, language="en-EN")
