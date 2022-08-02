@@ -53,7 +53,7 @@ def audiorec_demo_app():
             val = np.array(val)             # convert to np array
             sorted_ints = val[ind]
             stream = BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
-            #st.session_state.mic_input = stream.read()
+            st.session_state.mic_input = stream.read()
 
         # wav_bytes contains audio data in format to be further processed
         # display audio data as received on the Python side
