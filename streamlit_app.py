@@ -57,7 +57,7 @@ if __name__ == '__main__':
  
 
 # read the audio file
-with sr.AudioFile('audio.wav') as source:
+with sr.AudioFile(st.session_state.val) as source:
     audio = r.record(source)
 
 # recognize the speech in the audio
