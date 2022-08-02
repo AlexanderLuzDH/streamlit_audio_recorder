@@ -13,8 +13,6 @@ import pyaudio
 if 'mic_input' not in st.session_state:
     st.session_state.mic_input = ""
     
-st.session_state.filename
-
 if 'filename' not in st.session_state:
     st.session_state.filename = ""
 
